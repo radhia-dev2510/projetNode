@@ -7,13 +7,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// 🔴 STEP 3 (هنا)
 const SECRET_KEY = "mysecretkey";
 
 const users = [
   { name: "mariam", password: "1234" },
   { name: "ahmed", password: "5678" },
-  { name: "test", password: "0000" }
+  { name: "test", password: "0000" },
+  { name: "teste", password: "0001" }
+
 ];
 
 app.post("/api/login", (req, res) => {
@@ -23,7 +24,6 @@ app.post("/api/login", (req, res) => {
     (u) => u.name === name && u.password === password
   );
 
-  // 🔴 STEP 4 (هنا)
   if (foundUser) {
     const token = jwt.sign(
       { name: foundUser.name },
